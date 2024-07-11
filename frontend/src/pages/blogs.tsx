@@ -1,40 +1,43 @@
+
 import { Appbar } from "../components/appbar"
 import { BlogCard } from "../components/blogcard"
+import { PostDate } from "../components/blogdate";
+import { BlogSkelton } from "../components/skeleton";
+import { useBlogs } from "../hooks"
 export const Blogs = ()=>{
-   return <div>
-                <Appbar/>
-                <div className="flex justify-center">
-                        
-                        <div className="max-w-xl">
-                                    <BlogCard
-                                        authorname={"shadow"}
-                                        title={"How an Ugly Single page Website Makes $5,000 a Month without Affiliate Marketing"}
-                                        content={"In this blog you will learn how you should start gym In this blog you will learn how you should start gym log you will learn how you shoullog you will learn how you shoul"}
-                                        publishedDate={"2nd Feb 2024"}
-                                        
-                                        ></BlogCard>
-                                    <BlogCard
-                                        authorname={"shadow"}
-                                        title={"How an Ugly Single page Website Makes $5,000 a Month without Affiliate Marketing"}
-                                        content={"In this blog you will learn how you should start gym In this blog you will learn how you should start gym log you will learn how you shoullog you will learn how you shoul"}
-                                        publishedDate={"2nd Feb 2024"}
-                                        
-                                        ></BlogCard>
-                                    <BlogCard
-                                        authorname={"shadow"}
-                                        title={"How an Ugly Single page Website Makes $5,000 a Month without Affiliate Marketing"}
-                                        content={"In this blog you will learn how you should start gym In this blog you will learn how you should start gym log you will learn how you shoullog you will learn how you shoul"}
-                                        publishedDate={"2nd Feb 2024"}
-                                        
-                                        ></BlogCard>
-                                    <BlogCard
-                                        authorname={"shadow"}
-                                        title={"How an Ugly Single page Website Makes $5,000 a Month without Affiliate Marketing"}
-                                        content={"In this blog you will learn how you should start gym In this blog you will learn how you should start gym log you will learn how you shoullog you will learn how you shoul"}
-                                        publishedDate={"2nd Feb 2024"}
-                                        
-                                        ></BlogCard>
-                        </div>
+    const {loading,blogs}= useBlogs();
+
+    if(loading){
+        return <div>
+            <Appbar></Appbar>
+            <div className="flex justify-center">
+                <div>
+                    <BlogSkelton/>
+                    <BlogSkelton/>
+                    <BlogSkelton/>
+                    <BlogSkelton/>
+                    <BlogSkelton/>
                 </div>
-    </div>   
+                    </div>
+            </div>
+    }
+    
+   return <div>  
+   <Appbar/>
+   <div className="flex justify-center">
+           <div >
+               {blogs.map((blog)=>{
+                    return <BlogCard
+                    id={blog.id}
+                    authorname={blog.author.name}
+                    title={blog.title}
+                    content={blog.content}
+                    publishedDate={PostDate(blog.date)}
+                    ></BlogCard>
+               })}
+                       
+                       
+           </div>
+   </div>
+</div>   
 } 
