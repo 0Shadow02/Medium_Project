@@ -34,8 +34,7 @@ export const BlogCard =({
                 <div className=" text-xl font-bold pt-2">
                     {title}
                 </div>
-                <div className=" text-md font-thin">
-                    {content.length >100 ? content.slice(0,100)+"..." :content}
+                <div className=" text-md font-thin" dangerouslySetInnerHTML={{__html:content.length > 100 ? content.slice(0,100) + "..." : content}} >
                 </div>
                 <div className=" text-slate-500 text-sm font-thin pt-4">
                     {`${Math.ceil(content.length/100)} minute(s) read`}
@@ -50,10 +49,32 @@ function Circle(){
 
     </div>
 }
-export function Avatar( {name ,size="small"}:{name:string,size:"small"|"big"}){
+export function Avatar( {name ,size="small"}:{name:string,size:"small"|"big"|"large"}){
         return <div>
-            <div className={`relative inline-flex items-center justify-center overflow-hidden bg-gray-600 rounded-full ${size=== "small"?"w-6 h-6":"w-10 h-10"} `}>
-                   <span className={`${size === "small"?"text-xs":"text-md"} font-medium text-gray-300`}>{name.split("")[0]}</span>
-                </div>
+            <div
+        className={`relative inline-flex items-center justify-center overflow-hidden bg-gray-600 rounded-full ${
+          size === "small"
+            ? "w-6 h-6"
+            : size === "big"
+            ? "w-10 h-10"
+            : size === "large"
+            ? "w-28 h-28"
+            : "w-10 h-10"
+        }`}
+      >
+        <span
+          className={`${
+            size === "small"
+              ? "text-xs"
+              : size === "big"
+              ? "text-md"
+              : size === "large"
+              ? "text-5xl "
+              : "text-md"
+          } font-medium text-gray-300`}
+        >
+          {name.split("")[0]}
+        </span>
+      </div>
         </div>
 }

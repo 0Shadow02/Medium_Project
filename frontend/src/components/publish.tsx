@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import axios from "axios";
 import { Appbar } from "./appbar";
 import { BACKEND_URL } from "../config";
 import { useNavigate } from "react-router-dom";
 import ReactLoading from 'react-loading';
 import { PublishAlert } from "./alertmessage";
+import { MyEditor } from '../Editor';
 
-type TextEditorProps = {
-  onchange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
-  onclick? : (e: React.MouseEvent<HTMLElement>) => void
-};
+// type TextEditorProps = {
+//   onchange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+//   onclick? : (e: React.MouseEvent<HTMLElement>) => void
+// };
 
 export const Publish = () => {
   const [title, setTitle] = useState("");
@@ -17,6 +18,7 @@ export const Publish = () => {
   const navigate = useNavigate();
   const [isLoading, setLoading] = useState(false);
   const [alert, setAlert] = useState(false);
+  
 
   return (
     <div>
@@ -33,10 +35,13 @@ export const Publish = () => {
               onClick={()=>{setAlert(false)}}
               onChange={(e) => setTitle(e.target.value)}
               type="text"
-              className="focus:outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5"
+              className="focus:outline-none bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 mb-2"
               placeholder="title"
             />
-            <TextEditor onclick={()=>{setAlert(false)}} onchange={(e: any) => setContent(e.target.value)} />
+            <div>
+            <MyEditor value={content} onBlur={newcontent=>setContent(newcontent)}
+             onChange={(e: any) => setContent(e.target.value)}  />
+             </div>
             <div className="mt-5 mb-4">
               <button
                 onClick={async () => {
@@ -73,17 +78,17 @@ export const Publish = () => {
   );
 };
 
-function TextEditor({ onchange,onclick }: TextEditorProps ) {
-  return (
-    <div className="w-full mb-4">
-      <textarea
-      onClick={onclick}
-        onChange={onchange}
-        id="message"
-        rows={8}
-        className="focus:outline-none mt-4 block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
-        placeholder="Write the content here..."
-      ></textarea>
-    </div>
-  );
-}
+// function TextEditor({ onchange,onclick }: TextEditorProps ) {
+//   return (
+//     <div className="w-full mb-4">
+//       <textarea
+//       onClick={onclick}
+//         onChange={onchange}
+//         id="message"
+//         rows={8}
+//         className="focus:outline-none mt-4 block p-2 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300"
+//         placeholder="Write the content here..."
+//       ></textarea>
+//     </div>
+//   );
+// }

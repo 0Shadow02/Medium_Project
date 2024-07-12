@@ -1,14 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import {Editor, EditorState} from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import  JoditEditor  from 'jodit-react';
+import { useRef } from 'react';
 
-function MyEditor() {
-  const [editorState, setEditorState] = React.useState(
-    () => EditorState.createEmpty(),
-  );
 
-  return <Editor editorState={editorState} onChange={setEditorState} />;
+
+interface EditorProps {
+  value: string;
+  onChange?: (newValue: string) => void;
+	onBlur?: (newValue: string) => void;
 }
 
-ReactDOM.render(<MyEditor />, document.getElementById('container'));
+export const MyEditor = ({ value, onBlur, onChange  }: EditorProps) => {
+  const editor = useRef(null);
+
+  return ( <JoditEditor
+      ref={editor}
+      value={value}
+      onBlur={onBlur}
+      onChange={onChange}
+    />
+  
+  );
+};

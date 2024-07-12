@@ -47,7 +47,7 @@ export const Sidebar= ( )=>{
               </div>
               <ul className="pt-1 " role="none">
               <li>
-                <button onClick={()=>{navigate('/blogs')}} className="flex justify-start w-full px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-slate-200 ">
+                <button onClick={()=>{navigate('/profile')}} className="flex justify-start w-full px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-slate-200 ">
                      Profile
                     </button>
                 </li>

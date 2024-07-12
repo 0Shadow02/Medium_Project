@@ -6,6 +6,7 @@ import { Blogs } from './pages/blogs'
 import { Publish } from './components/publish'
 import {PrivateRoute} from './Privateroute'
 import { RecoilRoot } from 'recoil'
+import { Profile } from './pages/Profile'
 function App() {
 
   return (
@@ -18,21 +19,21 @@ function App() {
              <PrivateRoute>
               <Blog/>
              </PrivateRoute>
-            
             } />
           <Route path="/blogs" element={
              <PrivateRoute>
-              
               <Blogs/>
-              
              </PrivateRoute>
-            
             } />
           <Route path="/publish" element={
              <PrivateRoute>
               <Publish/>
              </PrivateRoute>
-            
+            } />
+          <Route path="/profile" element={
+             <PrivateRoute>
+              <Profile />
+             </PrivateRoute>
             } />
         </Routes>
       </BrowserRouter>

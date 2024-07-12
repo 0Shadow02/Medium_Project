@@ -16,8 +16,8 @@ export const FullBlog=({ blog }:{blog:Blog})=>{
             <div className="text-slate-500 pt-2">
                 Posted on {PostDate(blog.date)}
             </div>
-            <div className="pt-4">
-               {blog.content}
+            <div className="pt-4" dangerouslySetInnerHTML={{__html:blog.content}}>
+               {/* {blog.content} */}
             </div>
         </div>
         <div className="col-span-4 hidden md:block">
