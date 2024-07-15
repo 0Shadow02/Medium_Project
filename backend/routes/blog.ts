@@ -178,6 +178,9 @@ blogRouter.get("/posts/", async (c) => {
 
   const userid = c.get("userId");
   const allposts = await prisma.post.findMany({
+    orderBy: {
+      date: "desc",
+    },
     where: {
       authorid: userid,
     },
