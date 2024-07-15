@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
+    "@shadow02/blog-common": "^1.2.0",
     "@types/draft-js": "^0.11.18",
     "axios": "^1.7.2",
     "babel-polyfill": "^6.26.0",
