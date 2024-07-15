@@ -1,1 +1,1 @@
-export const BACKEND_URL = "https://backend.0amatsu0.workers.dev";
+export const BACKEND_URL = import.meta.env.VITE_REACT_APP_DATABASE_URl;
