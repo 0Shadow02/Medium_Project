@@ -58,7 +58,7 @@ export const Auth = ({ type }: { type: "signup" | "signin" }) => {
     }
   }
   return (
-    <div className="h-screen  flex justify-center flex-col">
+    <div className=" h-screen flex justify-center flex-col">
       {LoggedInstate && (
         <div className="flex justify-center absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 z-10">
           {" "}
