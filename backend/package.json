@@ -6,6 +6,8 @@
   },
   "dependencies": {
     "@prisma/extension-accelerate": "^1.1.0",
+    "@shadow02/blog-common": "^1.2.0",
+    "date-fns": "^3.6.0",
     "hono": "^4.4.12",
     "i": "^0.3.7",
     "prisma": "^5.16.1",
