@@ -1,1 +1,1 @@
-export const BACKEND_URL = import.meta.env.VITE_REACT_APP_DATABASE_URl;
+export const BACKEND_URL: string = import.meta.env.VITE_BACKEND_URL;
